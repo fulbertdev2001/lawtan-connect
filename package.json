@@ -1,0 +1,17 @@
+{
+  "name": "lawtan-connect-prototype",
+  "version": "1.0.0",
+  "description": "LAWTAN Connect — Prototype Officiel du Cluster (MVP Global)",
+  "scripts": {
+    "build": "echo Build complete",
+    "dev": "python -m http.server 8080 --directory prototype",
+    "start": "python -m http.server 8080 --directory prototype"
+  },
+  "keywords": [
+    "lawtan",
+    "cluster",
+    "prototype"
+  ],
+  "author": "fulbertdev2001",
+  "license": "ISC"
+}

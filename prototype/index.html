@@ -1,0 +1,2283 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LAWTAN Connect — Prototype Officiel du Cluster (MVP Global)</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2318633F'><path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z'/></svg>">
+</head>
+<body>
+
+  <!-- Overlay mobile -->
+  <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+  <!-- ======================================================================
+       BARRE LATÉRALE (SIDEBAR OFFICIELLE)
+       ====================================================================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand-header">
+      <div class="brand-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22v-9"/>
+          <path d="M9 15l3-3 3 3"/>
+          <path d="M7 9a5 5 0 0 1 10 0c0 3-2 5-5 8-3-3-5-5-5-8z"/>
+        </svg>
+      </div>
+      <div style="flex:1;">
+        <div class="brand-title">LAWTAN CONNECT</div>
+        <div class="brand-sub">GESTION DU CLUSTER</div>
+      </div>
+      <button class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Fermer le menu">×</button>
+    </div>
+
+    <!-- PILOTAGE -->
+    <div class="nav-group">
+      <div class="nav-group-title">PILOTAGE</div>
+      <div class="nav-item active" data-view="dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+        Tableau de bord
+      </div>
+    </div>
+
+    <!-- CLUSTER -->
+    <div class="nav-group">
+      <div class="nav-group-title">CLUSTER</div>
+      <div class="nav-item" data-view="members">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        Membres
+        <span class="nav-badge">214</span>
+      </div>
+      <div class="nav-item" data-view="parcels">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+        Parcelles
+        <span class="nav-badge">142</span>
+      </div>
+      <div class="nav-item" data-view="map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+        Carte du cluster
+      </div>
+    </div>
+
+    <!-- FORMATION -->
+    <div class="nav-group">
+      <div class="nav-group-title">FORMATION</div>
+      <div class="nav-item" data-view="schools">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Champs écoles
+      </div>
+      <div class="nav-item" data-view="calendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+        Séances & présences
+      </div>
+      <div class="nav-item" data-view="schools">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+        Adoption (BPA)
+      </div>
+    </div>
+
+    <!-- CAMPAGNE -->
+    <div class="nav-group">
+      <div class="nav-group-title">CAMPAGNE</div>
+      <div class="nav-item" data-view="calendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        Calendrier cultural
+      </div>
+      <div class="nav-item" data-view="calendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        Recommandations
+      </div>
+      <div class="nav-item" data-view="parcels">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/></svg>
+        Récoltes
+      </div>
+    </div>
+
+    <!-- INDICATEURS -->
+    <div class="nav-group">
+      <div class="nav-group-title">INDICATEURS</div>
+      <div class="nav-item" data-view="employment">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Emplois & inclusion
+      </div>
+      <div class="nav-item" data-view="reports">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        Rapports programme
+      </div>
+    </div>
+
+    <!-- SERVICES -->
+    <div class="nav-group">
+      <div class="nav-group-title">SERVICES</div>
+      <div class="nav-item" data-view="services">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Services aux membres
+      </div>
+      <div class="nav-item" data-view="providers">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+        Prestataires
+      </div>
+    </div>
+
+    <!-- COMMUNICATION -->
+    <div class="nav-group">
+      <div class="nav-group-title">COMMUNICATION</div>
+      <div class="nav-item" data-view="messages">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Messages
+      </div>
+    </div>
+
+    <!-- CONFIGURATION & TERRAIN -->
+    <div class="nav-group">
+      <div class="nav-group-title">CONFIGURATION & TERRAIN</div>
+      <div class="nav-item" data-view="settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/></svg>
+        Paramètres & ERP
+      </div>
+      <div class="nav-item" data-view="mobile" style="color:#7ef0a8; background:rgba(46, 204, 113, 0.15); margin-top:6px;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        App Terrain (Offline)
+        <span class="nav-badge pending-sync-count">2</span>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="sidebar-footer">
+      <div class="campaign-tag">Campagne 2026-2027</div>
+      <div class="version-pill">v1.0</div>
+    </div>
+  </aside>
+
+  <!-- ======================================================================
+       ZONE PRINCIPALE (EN-TÊTE + CONTENU DYNAMIQUE)
+       ====================================================================== -->
+  <main class="main-wrapper">
+    <!-- En-tête supérieur officiel -->
+    <header class="top-header">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Menu principal">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+        <div class="header-left">
+          <div class="cluster-title-wrap">
+            <h1 class="cluster-name">Cluster LAWTAN</h1>
+            <span class="status-badge online">● En ligne</span>
+          </div>
+          <div class="cluster-sub">Mboundoum-Barrage · Commune de Diama · Programme RIZAO, pilier 2</div>
+        </div>
+      </div>
+      <div class="header-right">
+        <button class="mode-switcher-btn" id="mode-switcher">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+          Simulateur Mobile Terrain
+        </button>
+        <div class="user-profile">
+          <div class="user-avatar">AD</div>
+          <div class="user-info">
+            <div class="user-name">Administrateur données</div>
+            <div class="user-role">Cluster LAWTAN</div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Contenu scrollable multi-pages -->
+    <section class="content-area">
+
+      <!-- ==================================================================
+           PAGE 1 : TABLEAU DE BORD DU CLUSTER (TRANSVERSE JALON 2)
+           ================================================================== -->
+      <div class="view-page active" id="view-dashboard">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Tableau de bord du cluster</h2>
+            <div class="section-subtitle">Campagne 2026-2027 · données arrêtées au 24 septembre</div>
+          </div>
+          <button class="btn-primary" onclick="generateReport('pdf', 'Rapport_Programme_Mensuel')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Rapport programme
+          </button>
+        </div>
+
+        <!-- Rangée de 5 KPI Stat Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Membres du cluster</div>
+            <div class="stat-value stat-value-members">214</div>
+            <div class="stat-sub positive">+18 ce mois</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Superficie encadrée</div>
+            <div class="stat-value">176,4 <span>ha</span></div>
+            <div class="stat-sub">142 parcelles relevées</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Taux d'adoption</div>
+            <div class="stat-value">62 <span>%</span></div>
+            <div class="stat-sub">sur 87 visites réalisées</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Emplois — cumul campagne</div>
+            <div class="stat-value">1 340 <span>j-p</span></div>
+            <div class="stat-sub">soit 6,1 ETP (base 220 j)</div>
+          </div>
+          <div class="stat-card alert-border">
+            <div class="stat-label">Alertes ouvertes</div>
+            <div class="stat-value" style="color:#dc2626;">7</div>
+            <div class="stat-sub danger">dont 3 bloquantes</div>
+          </div>
+        </div>
+
+        <!-- 2 Panneaux : Cibles ÉGIS & Alertes / Qualité -->
+        <div class="panels-grid-2">
+          <!-- Panneau Cibles d'Inclusion ÉGIS (Bailleur MEDA) -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>CIBLES D'INCLUSION ÉGIS</span>
+              <span style="font-size:11px; color:var(--text-muted); font-weight:600;">Programme RIZAO</span>
+            </div>
+
+            <!-- Jauge 1 : Jeunes Femmes -->
+            <div class="gauge-item">
+              <div class="gauge-header">
+                <span>Part de jeunes femmes (18-35 ans)</span>
+                <span class="gauge-percent">58 %</span>
+              </div>
+              <div class="gauge-track">
+                <div class="gauge-fill" style="width: 58%;"></div>
+                <div class="gauge-target-line" style="left: 70%;" title="Cible contractuelle : 70%"></div>
+              </div>
+            </div>
+
+            <!-- Jauge 2 : Handicap -->
+            <div class="gauge-item">
+              <div class="gauge-header">
+                <span>Part de personnes en situation de handicap</span>
+                <span class="gauge-percent">3,2 %</span>
+              </div>
+              <div class="gauge-track">
+                <div class="gauge-fill warning" style="width: 32%;"></div>
+                <div class="gauge-target-line" style="left: 50%;" title="Cible contractuelle : 5%"></div>
+              </div>
+            </div>
+
+            <!-- Jauge 3 : Jeunes 18-35 ans globaux -->
+            <div class="gauge-item">
+              <div class="gauge-header">
+                <span>Part de jeunes de 18 à 35 ans</span>
+                <span class="gauge-percent">71 %</span>
+              </div>
+              <div class="gauge-track">
+                <div class="gauge-fill" style="width: 71%;"></div>
+                <div class="gauge-target-line" style="left: 70%;" title="Cible contractuelle : 70%"></div>
+              </div>
+            </div>
+
+            <div class="gauge-insight">
+              Pour atteindre 70 % de jeunes femmes : <strong>recruter 26 jeunes femmes</strong>. Le trait vertical marque la cible contractuelle.
+            </div>
+          </div>
+
+          <!-- Panneau Alertes et Qualité des Données -->
+          <div class="panel-card">
+            <div class="panel-title">
+              <span>ALERTES ET QUALITÉ DES DONNÉES</span>
+              <span style="font-size:11px; color:#dc2626; font-weight:700;">Action Requise</span>
+            </div>
+
+            <div class="alert-list">
+              <div class="alert-row" onclick="inspectMember('LWT-00045')">
+                <div class="alert-left">
+                  <div class="alert-bullet bloquant"></div>
+                  <div><strong>12 membres sans date de naissance</strong> — bloque calcul 18-35</div>
+                </div>
+                <span class="alert-tag bloquant">bloquant</span>
+              </div>
+
+              <div class="alert-row" onclick="inspectMember('LWT-00048')">
+                <div class="alert-left">
+                  <div class="alert-bullet bloquant"></div>
+                  <div><strong>3 doublons en attente de fusion</strong> — même tel, noms proches</div>
+                </div>
+                <span class="alert-tag bloquant">bloquant</span>
+              </div>
+
+              <div class="alert-row" onclick="document.querySelector('.nav-item[data-view=parcels]').click()">
+                <div class="alert-left">
+                  <div class="alert-bullet bloquant"></div>
+                  <div><strong>2 parcelles se chevauchent</strong> — cuvette de Boundoum</div>
+                </div>
+                <span class="alert-tag bloquant">bloquant</span>
+              </div>
+
+              <div class="alert-row" onclick="document.querySelector('.nav-item[data-view=parcels]').click()">
+                <div class="alert-left">
+                  <div class="alert-bullet traiter"></div>
+                  <div><strong>9 parcelles sans géométrie relevée</strong></div>
+                </div>
+                <span class="alert-tag traiter">à traiter</span>
+              </div>
+
+              <div class="alert-row" onclick="document.querySelector('.nav-item[data-view=calendar]').click()">
+                <div class="alert-left">
+                  <div class="alert-bullet traiter"></div>
+                  <div><strong>Séance du 04/09 non saisie</strong> — cohorte B</div>
+                </div>
+                <span class="alert-tag traiter">à traiter</span>
+              </div>
+
+              <div class="alert-row" onclick="document.querySelector('.nav-item[data-view=calendar]').click()">
+                <div class="alert-left">
+                  <div class="alert-bullet info"></div>
+                  <div><strong>Écart au calendrier : 6 parcelles en retard de fumure</strong></div>
+                </div>
+                <span class="alert-tag info">information</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 2 : MEMBRES DU CLUSTER (MODULE C-1 JALON 1)
+           ================================================================== -->
+      <div class="view-page" id="view-members">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Membres du cluster</h2>
+            <div class="section-subtitle">Une personne, une fiche, plusieurs rôles — 214 membres enregistrés</div>
+          </div>
+          <button class="btn-primary" onclick="openNewMemberModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouvelle adhésion
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Membres actifs</div>
+            <div class="stat-value stat-value-members">214</div>
+            <div class="stat-sub">dont 132 femmes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Jeunes de 18 à 35 ans</div>
+            <div class="stat-value">152</div>
+            <div class="stat-sub positive">71 % de l'effectif</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Fiches incomplètes</div>
+            <div class="stat-value" style="color:#d97706;">23</div>
+            <div class="stat-sub">à compléter</div>
+          </div>
+          <div class="stat-card alert-border">
+            <div class="stat-label">Doublons en attente</div>
+            <div class="stat-value" style="color:#dc2626;">3</div>
+            <div class="stat-sub danger">fusion à valider</div>
+          </div>
+        </div>
+
+        <!-- Barre de filtres et de recherche -->
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <div class="filter-pill active" data-filter="all">Tous</div>
+            <div class="filter-pill" data-filter="producteurs">Producteurs</div>
+            <div class="filter-pill" data-filter="cep">Participants CEP</div>
+            <div class="filter-pill" data-filter="prestataires">Prestataires</div>
+            <div class="filter-pill" data-filter="incomplets">Incomplets</div>
+            <div class="filter-pill" data-filter="doublons">Doublons suspects</div>
+          </div>
+          <div class="search-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-members-input" placeholder="Rechercher par nom, téléphone, code...">
+          </div>
+        </div>
+
+        <!-- Tableau des membres -->
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>CODE</th>
+                <th>NOM ET PRÉNOM</th>
+                <th>SEXE</th>
+                <th>ÂGE</th>
+                <th>VILLAGE</th>
+                <th>RÔLES CUMULÉS</th>
+                <th style="text-align:center">PARCELLES</th>
+                <th style="text-align:center">CNI</th>
+                <th>STATUT</th>
+              </tr>
+            </thead>
+            <tbody id="members-table-body">
+              <!-- Dynamically populated by app.js -->
+            </tbody>
+          </table>
+          <div class="table-footer">
+            <div>Affichage de 1 à 7 sur 214 membres</div>
+            <div class="pagination">
+              <button class="page-btn">‹</button>
+              <button class="page-btn active">1</button>
+              <button class="page-btn">2</button>
+              <button class="page-btn">›</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 3 : PARCELLES ET TERRITOIRE (MODULE C-2 JALON 1)
+           ================================================================== -->
+      <div class="view-page" id="view-parcels">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Parcelles et territoire</h2>
+            <div class="section-subtitle">142 parcelles relevées sur 176,4 ha — campagne 2026-2027</div>
+          </div>
+          <button class="btn-primary" onclick="openNewParcelModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouvelle parcelle
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Parcelles relevées</div>
+            <div class="stat-value" id="kpi-parcelles-count">142</div>
+            <div class="stat-sub">sur 168 déclarées</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Superficie mesurée</div>
+            <div class="stat-value" id="kpi-superficie-mesuree">176,4 <span>ha</span></div>
+            <div class="stat-sub">déclarée : 194,0 ha</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Écart moyen mesuré / déclaré</div>
+            <div class="stat-value" id="kpi-ecart-moyen" style="color:#d97706;">- 9,1 <span>%</span></div>
+            <div class="stat-sub">écart normal en cuvette</div>
+          </div>
+          <div class="stat-card alert-border">
+            <div class="stat-label">Contrôles en échec</div>
+            <div class="stat-value" style="color:#dc2626;">2</div>
+            <div class="stat-sub danger">chevauchements détectés</div>
+          </div>
+        </div>
+
+        <!-- Visualisation Cartographique Interactive (Maquette Page 4) -->
+        <div class="map-canvas-container">
+          <svg class="map-svg" viewBox="0 0 900 320">
+            <!-- Fond géomatique -->
+            <rect width="100%" height="100%" fill="#edf5ef"/>
+            
+            <!-- Canaux d'irrigation SAED -->
+            <path d="M 0 170 Q 400 160 900 165" stroke="#7bb7d9" stroke-width="8" fill="none"/>
+            <path d="M 420 0 L 440 320" stroke="#7bb7d9" stroke-width="7" fill="none"/>
+            
+            <!-- Piste d'accès agricole -->
+            <path d="M 0 195 L 900 195" stroke="#cbd5e1" stroke-width="3" stroke-dasharray="6,6" fill="none"/>
+
+            <!-- Parcelles rangée 1 -->
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00041-A" data-owner="BA Amadou" data-area="1.10 ha" data-variety="Sahel 108" points="30,80 110,80 105,145 25,145" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00042-A" data-owner="SOW Aminata" data-area="1.24 ha" data-variety="Sahel 108" points="120,85 190,85 185,145 115,145" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00043-A" data-owner="BA Ousmane" data-area="2.08 ha" data-variety="ISRIZ 15" points="200,85 270,85 265,145 195,145" fill="#e7d492" stroke="#b4932d"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00044-A" data-owner="NDIAYE Fatou" data-area="0.95 ha" data-variety="Sahel 108" points="280,85 350,85 345,145 275,145" fill="#e7d492" stroke="#b4932d"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00045-A" data-owner="GAYE Mariama" data-area="1.15 ha" data-variety="Sahel 201" points="360,80 415,80 410,145 355,145" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00046-A" data-owner="DIOP Alioune" data-area="1.80 ha" data-variety="Sahel 108" points="450,85 520,85 515,145 445,145" fill="#e7d492" stroke="#b4932d"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00047-A" data-owner="SY Khadija" data-area="1.30 ha" data-variety="Sahel 108" points="530,85 600,85 595,145 525,145" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00048-A" data-owner="KANE Ibrahima" data-area="1.40 ha" data-variety="Sahel 108" points="610,80 680,80 675,145 605,145" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00049-A" data-owner="NIANG Samba" data-area="1.25 ha" data-variety="Sahel 108" points="690,80 760,80 755,145 685,145" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00050-A" data-owner="FALL Babacar" data-area="1.50 ha" data-variety="Sahel 108" points="770,80 840,80 835,145 765,145" fill="#a4cfb7" stroke="#18633f"/>
+
+            <!-- Parcelles rangée 2 (Inférieure) -->
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00051-A" data-owner="FALL Seynabou" data-area="1.42 ha" data-variety="Sahel 108" points="25,220 100,220 95,290 20,290" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00052-A" data-owner="SALL Aissatou" data-area="1.15 ha" data-variety="Sahel 108" points="110,220 180,220 175,290 105,290" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00053-A" data-owner="DIOP Cheikh" data-area="1.20 ha" data-variety="Sahel 108" points="190,220 260,220 255,290 185,290" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00054-A" data-owner="CISSE Moussa" data-area="1.60 ha" data-variety="Sahel 108" points="270,220 340,220 335,290 265,290" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00055-A" data-owner="WADE Aliou" data-area="1.35 ha" data-variety="Sahel 108" points="350,220 410,220 405,290 345,290" fill="#e7d492" stroke="#b4932d"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00056-A" data-owner="SECK Astou" data-area="1.40 ha" data-variety="Sahel 108" points="445,220 510,220 505,290 440,290" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00057-A" data-owner="THIAM Moussa" data-area="1.25 ha" data-variety="Sahel 108" points="520,220 590,220 585,290 515,290" fill="#a4cfb7" stroke="#18633f"/>
+            <polygon class="parcel-polygon" data-code="PAR-LWT-00058-A" data-owner="DIOUF Ndèye" data-area="1.05 ha" data-variety="Sahel 108" points="600,220 670,220 665,290 595,290" fill="#a4cfb7" stroke="#18633f"/>
+          </svg>
+
+          <div class="map-legend">
+            <div class="legend-item">
+              <div class="legend-color" style="background:#a4cfb7; border-color:#18633f;"></div>
+              <span>Parcelle relevée conforme</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:#e7d492; border-color:#b4932d;"></div>
+              <span>À vérifier (écart > 10%)</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background:#7bb7d9;"></div>
+              <span>Canal principal SAED</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tableau des parcelles -->
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>CODE PARCELLE</th>
+                <th>MEMBRE EXPLOITANT</th>
+                <th>CUVETTE</th>
+                <th>RÉF. SAED</th>
+                <th>MESURÉE</th>
+                <th>DÉCLARÉE</th>
+                <th>VARIÉTÉ</th>
+                <th>LEVÉE</th>
+                <th>CONTRÔLE</th>
+              </tr>
+            </thead>
+            <tbody id="parcelles-table-body">
+              <!-- Dynamique via app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 4 : CARTE DU CLUSTER (SIG ET VUES TERRITOIRE)
+           ================================================================== -->
+      <div class="view-page" id="view-map">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Carte générale du cluster</h2>
+            <div class="section-subtitle">Visualisation géodésique WGS84 des cuvettes, casiers et réseaux SAED</div>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-secondary" onclick="generateReport('geojson', 'Parcelles_GeoJSON')">Export GeoJSON</button>
+            <button class="btn-primary" onclick="showToast('Chargement couche cadastre SAED')">Couches SIG</button>
+          </div>
+        </div>
+
+        <div class="map-canvas-container" style="height: 520px;">
+          <svg class="map-svg" viewBox="0 0 1000 480">
+            <!-- Fond satellite simulé -->
+            <rect width="100%" height="100%" fill="#e3ece6"/>
+            
+            <!-- Fleuve Sénégal & Défluents -->
+            <path d="M 0 40 Q 300 90 600 40 T 1000 80" stroke="#4a90e2" stroke-width="24" fill="none" opacity="0.6"/>
+            
+            <!-- Réseau hydraulique principal -->
+            <path d="M 150 70 L 220 480" stroke="#7bb7d9" stroke-width="6" fill="none"/>
+            <path d="M 500 50 L 530 480" stroke="#7bb7d9" stroke-width="6" fill="none"/>
+            <path d="M 800 65 L 820 480" stroke="#7bb7d9" stroke-width="6" fill="none"/>
+
+            <!-- Cuvette 1 : Mboundoum-Barrage -->
+            <g transform="translate(60, 140)">
+              <rect width="320" height="260" rx="12" fill="#d2e8db" stroke="#18633f" stroke-dasharray="4,4"/>
+              <text x="16" y="28" font-size="14" font-weight="800" fill="#0b3b24">Cuvette Mboundoum-Barrage (SAED BD-14)</text>
+              <polygon points="20,50 140,50 135,120 15,120" fill="#18633f" opacity="0.75" class="parcel-polygon" data-code="PAR-LWT-00042-A" data-owner="SOW Aminata" data-area="1.24 ha" data-variety="Sahel 108"/>
+              <polygon points="150,50 290,50 285,120 145,120" fill="#18633f" opacity="0.75" class="parcel-polygon" data-code="PAR-LWT-00043-A" data-owner="BA Ousmane" data-area="2.08 ha" data-variety="ISRIZ 15"/>
+              <polygon points="20,135 140,135 135,210 15,210" fill="#18633f" opacity="0.75" class="parcel-polygon" data-code="PAR-LWT-00044-A" data-owner="NDIAYE Fatou" data-area="0.95 ha" data-variety="Sahel 108"/>
+              <polygon points="150,135 290,135 285,210 145,210" fill="#e7d492" stroke="#b4932d" class="parcel-polygon" data-code="PAR-LWT-00045-A" data-owner="GAYE Mariama" data-area="1.15 ha" data-variety="Sahel 201"/>
+            </g>
+
+            <!-- Cuvette 2 : Thiagar / Kassack -->
+            <g transform="translate(420, 140)">
+              <rect width="250" height="260" rx="12" fill="#d2e8db" stroke="#18633f" stroke-dasharray="4,4"/>
+              <text x="16" y="28" font-size="14" font-weight="800" fill="#0b3b24">Cuvette de Thiagar (SAED TH-06)</text>
+              <polygon points="20,50 220,50 215,130 15,130" fill="#18633f" opacity="0.75" class="parcel-polygon" data-code="PAR-LWT-00051-A" data-owner="FALL Seynabou" data-area="1.42 ha" data-variety="Sahel 108"/>
+              <polygon points="20,145 220,145 215,225 15,225" fill="#18633f" opacity="0.75" class="parcel-polygon" data-code="PAR-LWT-00052-A" data-owner="SALL Aissatou" data-area="1.15 ha" data-variety="Sahel 108"/>
+            </g>
+
+            <!-- Cuvette 3 : Ndombo -->
+            <g transform="translate(710, 140)">
+              <rect width="230" height="260" rx="12" fill="#d2e8db" stroke="#18633f" stroke-dasharray="4,4"/>
+              <text x="16" y="28" font-size="14" font-weight="800" fill="#0b3b24">Cuvette Ndombo (SAED ND-02)</text>
+              <polygon points="20,50 200,50 195,130 15,130" fill="#e7d492" stroke="#b4932d" class="parcel-polygon" data-code="PAR-LWT-00046-B" data-owner="DIOP Alioune" data-area="0.86 ha" data-variety="Sahel 108"/>
+            </g>
+          </svg>
+          <div class="map-legend">
+            <div class="legend-item"><div class="legend-color" style="background:#18633f;"></div><span>Parcelles Relevées</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#e7d492;"></div><span>Écart / À vérifier</span></div>
+            <div class="legend-item"><div class="legend-color" style="background:#4a90e2;"></div><span>Fleuve Sénégal</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 5 : CHAMPS ÉCOLES PAYSANS (MODULE C-4 JALON 2)
+           ================================================================== -->
+      <div class="view-page" id="view-schools">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Champs écoles paysans</h2>
+            <div class="section-subtitle">CEP-LWT-01 · Mboundoum-Barrage · 0,7 ha · Animateur désigné SENAD</div>
+          </div>
+          <button class="btn-primary" onclick="openNewSessionModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouvelle séance
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Participants</div>
+            <div class="stat-value">39</div>
+            <div class="stat-sub">2 cohortes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Part de femmes</div>
+            <div class="stat-value">62 <span>%</span></div>
+            <div class="stat-sub positive">24 femmes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Séances tenues</div>
+            <div class="stat-value" id="kpi-seances-count">7</div>
+            <div class="stat-sub">sur 14 prévues</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Taux de présence</div>
+            <div class="stat-value">78 <span>%</span></div>
+            <div class="stat-sub">moyenne sur 7 séances</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Visites d'adoption</div>
+            <div class="stat-value">12</div>
+            <div class="stat-sub">sur 39 participants</div>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <div class="filter-pill active">Toutes les séances</div>
+            <div class="filter-pill">Cohorte A</div>
+            <div class="filter-pill">Cohorte B</div>
+            <div class="filter-pill">Essais agronomiques</div>
+            <div class="filter-pill">Journées démo</div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>N°</th>
+                <th>DATE</th>
+                <th>THÈME DE FORMATION</th>
+                <th>COHORTE</th>
+                <th>ANIMATEUR</th>
+                <th>DURÉE</th>
+                <th>PRÉSENTS</th>
+                <th>ABSENTS</th>
+                <th>TAUX</th>
+              </tr>
+            </thead>
+            <tbody id="sessions-table-body">
+              <!-- Dynamique via app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 6 : CALENDRIER CULTURAL & CONSEIL (MODULES C-6 & C-7)
+           ================================================================== -->
+      <div class="view-page" id="view-calendar">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Calendrier cultural</h2>
+            <div class="section-subtitle">PAR-LWT-00042-A · SOW Aminata · Sahel 108 · semis le 20/07/2026</div>
+          </div>
+          <button class="btn-primary" onclick="openRecommendationModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Voir la recommandation
+          </button>
+        </div>
+
+        <!-- Timeline Graphique des étapes (Maquette Page 6) -->
+        <div class="timeline-card">
+          <div class="timeline-header">ITINÉRAIRE TECHNIQUE — 1,24 HA MESURÉS</div>
+          <div class="timeline-flow">
+            <div class="timeline-node done">
+              <div class="node-dot">✓</div>
+              <div class="node-label">Préparation</div>
+              <div class="node-date">12/07 ✓</div>
+            </div>
+            <div class="timeline-node done">
+              <div class="node-dot">✓</div>
+              <div class="node-label">Semis</div>
+              <div class="node-date">20/07 ✓</div>
+            </div>
+            <div class="timeline-node done">
+              <div class="node-dot">✓</div>
+              <div class="node-label">Fumure de fond</div>
+              <div class="node-date">27/07 ✓</div>
+            </div>
+            <div class="timeline-node done">
+              <div class="node-dot">✓</div>
+              <div class="node-label">Désherbage</div>
+              <div class="node-date">14/08 ✓</div>
+            </div>
+            <div class="timeline-node warning active">
+              <div class="node-dot">!</div>
+              <div class="node-label" style="color:#dc2626;">Fumure couverture</div>
+              <div class="node-date" style="color:#dc2626; font-weight:700;">échue le 08/09</div>
+            </div>
+            <div class="timeline-node">
+              <div class="node-dot">○</div>
+              <div class="node-label">Tallage</div>
+              <div class="node-date">22/09</div>
+            </div>
+            <div class="timeline-node">
+              <div class="node-dot">○</div>
+              <div class="node-label">Épiaison</div>
+              <div class="node-date">14/10</div>
+            </div>
+            <div class="timeline-node">
+              <div class="node-dot">○</div>
+              <div class="node-label">Assec</div>
+              <div class="node-date">28/10</div>
+            </div>
+            <div class="timeline-node">
+              <div class="node-dot">○</div>
+              <div class="node-label">Récolte</div>
+              <div class="node-date">08/11</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card alert-border">
+            <div class="stat-label">Étape en retard</div>
+            <div class="stat-value" style="color:#dc2626; font-size:24px;">Fumure de couverture</div>
+            <div class="stat-sub danger">échue depuis 3 jours</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Rappel envoyé</div>
+            <div class="stat-value" style="font-size:24px;">08/09 · vocal wolof</div>
+            <div class="stat-sub positive">accusé de réception reçu</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Écart dose recommandée / appliquée</div>
+            <div class="stat-value" style="color:#d97706;">- 18 <span>%</span></div>
+            <div class="stat-sub">sur la fumure de fond</div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>ÉTAPE</th>
+                <th>RECOMMANDÉ</th>
+                <th>APPLIQUÉ</th>
+                <th>ÉCART</th>
+                <th>SOURCE DE LA RECOMMANDATION</th>
+                <th>DATE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Fumure de fond — DAP</strong></td>
+                <td>124 kg</td>
+                <td>102 kg</td>
+                <td><span class="status-pill warn">- 18 %</span></td>
+                <td>RiceAdvice · APS du cluster</td>
+                <td>25/07/2026</td>
+              </tr>
+              <tr>
+                <td><strong>Fumure de fond — urée</strong></td>
+                <td>62 kg</td>
+                <td>62 kg</td>
+                <td><span class="status-pill ok">conforme</span></td>
+                <td>RiceAdvice · APS du cluster</td>
+                <td>25/07/2026</td>
+              </tr>
+              <tr>
+                <td><strong>Désherbage</strong></td>
+                <td>2 passages</td>
+                <td>2 passages</td>
+                <td><span class="status-pill ok">conforme</span></td>
+                <td>Itinéraire cluster</td>
+                <td>14/08/2026</td>
+              </tr>
+              <tr>
+                <td><strong>Fumure de couverture — urée</strong></td>
+                <td>74 kg</td>
+                <td>—</td>
+                <td><span class="status-pill bloquant">non appliqué</span></td>
+                <td>RiceAdvice · APS du cluster</td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 7 : EMPLOIS ET INCLUSION (MODULE C-5 JALON 2)
+           ================================================================== -->
+      <div class="view-page" id="view-employment">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Emplois et inclusion</h2>
+            <div class="section-subtitle">Indicateurs du programme RIZAO — campagne 2026-2027</div>
+          </div>
+          <button class="btn-primary" onclick="generateReport('xlsx', 'Export_Emplois_Suivi_Evaluation')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Export suivi-évaluation
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Jours-personnes cumulés</div>
+            <div class="stat-value">1 340</div>
+            <div class="stat-sub">depuis le 1er juillet</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Équivalents temps plein</div>
+            <div class="stat-value">6,1</div>
+            <div class="stat-sub">base officielle 220 j/an</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Emplois primaires</div>
+            <div class="stat-value">38</div>
+            <div class="stat-sub">permanents et saisonniers</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Emplois secondaires</div>
+            <div class="stat-value">54</div>
+            <div class="stat-sub">dont 4 prestataires jeunes</div>
+          </div>
+        </div>
+
+        <div class="panels-grid-2">
+          <!-- DÉSAGRÉGATION ÉGIS -->
+          <div class="panel-card">
+            <div class="panel-title">DÉSAGRÉGATION ÉGIS — ÉCART AUX CIBLES</div>
+            <div class="gauge-item">
+              <div class="gauge-header"><span>Jeunes femmes de 18 à 35 ans — cible 70 %</span><span class="gauge-percent">58 %</span></div>
+              <div class="gauge-track"><div class="gauge-fill" style="width:58%;"></div><div class="gauge-target-line" style="left:70%;"></div></div>
+            </div>
+            <div class="gauge-item">
+              <div class="gauge-header"><span>Personnes en situation de handicap — cible 5 %</span><span class="gauge-percent">3,2 %</span></div>
+              <div class="gauge-track"><div class="gauge-fill warning" style="width:32%;"></div><div class="gauge-target-line" style="left:50%;"></div></div>
+            </div>
+            <div class="gauge-item">
+              <div class="gauge-header"><span>Femmes, tous âges</span><span class="gauge-percent">61 %</span></div>
+              <div class="gauge-track"><div class="gauge-fill" style="width:61%;"></div></div>
+            </div>
+            <div class="gauge-item">
+              <div class="gauge-header"><span>Jeunes de 18 à 35 ans</span><span class="gauge-percent">71 %</span></div>
+              <div class="gauge-track"><div class="gauge-fill" style="width:71%;"></div></div>
+            </div>
+            <div class="gauge-insight">
+              À recruter pour tenir les cibles : <strong>26 jeunes femmes</strong> et <strong>4 personnes en situation de handicap</strong>.
+            </div>
+          </div>
+
+          <!-- COMPLÉTUDE DE LA DONNÉE -->
+          <div class="panel-card">
+            <div class="panel-title">COMPLÉTUDE DE LA DONNÉE</div>
+            <div class="alert-list">
+              <div class="alert-row">
+                <div class="alert-left">
+                  <div class="alert-bullet bloquant"></div>
+                  <div><strong>12 membres sans date de naissance</strong><br><span style="font-size:11px; color:var(--text-muted);">La tranche 18-35 ne peut pas être calculée pour ces personnes.</span></div>
+                </div>
+              </div>
+              <div class="alert-row">
+                <div class="alert-left">
+                  <div class="alert-bullet traiter"></div>
+                  <div><strong>8 déclarations sans justificatif</strong><br><span style="font-size:11px; color:var(--text-muted);">Liste d'émargement ou contrat à photographier.</span></div>
+                </div>
+              </div>
+              <div class="alert-row">
+                <div class="alert-left">
+                  <div class="alert-bullet info"></div>
+                  <div><strong>Méthode de calcul officielle</strong><br><span style="font-size:11px; color:var(--text-muted);">1 ETP = 220 jours-personnes. Cliquez un chiffre pour voir les lignes qui le composent.</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>EMPLOYEUR</th>
+                <th>TYPE</th>
+                <th>RÉGIME</th>
+                <th>JOURS-PERSONNES</th>
+                <th>FEMMES</th>
+                <th>18-35 ANS</th>
+                <th>JPH</th>
+                <th>JUSTIFICATIF</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>GIE LAWTAN — UTC</strong></td>
+                <td>Primaire</td>
+                <td>Permanent</td>
+                <td>420</td>
+                <td>38 %</td>
+                <td>44 %</td>
+                <td>1</td>
+                <td><span class="status-pill ok">✓ contrat</span></td>
+              </tr>
+              <tr>
+                <td><strong>GIE LAWTAN — production</strong></td>
+                <td>Primaire</td>
+                <td>Saisonnier</td>
+                <td>312</td>
+                <td>57 %</td>
+                <td>66 %</td>
+                <td>0</td>
+                <td><span class="status-pill ok">✓ émargement</span></td>
+              </tr>
+              <tr>
+                <td><strong>Producteurs partenaires</strong></td>
+                <td>Secondaire</td>
+                <td>Journalier</td>
+                <td>486</td>
+                <td>71 %</td>
+                <td>78 %</td>
+                <td>3</td>
+                <td><span class="status-pill ok">✓ émargement</span></td>
+              </tr>
+              <tr>
+                <td><strong>Prestataires jeunes</strong></td>
+                <td>Secondaire</td>
+                <td>Permanent</td>
+                <td>122</td>
+                <td>50 %</td>
+                <td>100 %</td>
+                <td>0</td>
+                <td><span class="status-pill warn">2 manquants</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 8 : SERVICES AUX MEMBRES (MODULE C-9 JALON 4)
+           ================================================================== -->
+      <div class="view-page" id="view-services">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Services aux membres</h2>
+            <div class="section-subtitle">Demandes transmises à l'ERP (Flux F-4), kits d'intrants et boutiques</div>
+          </div>
+          <button class="btn-primary" onclick="openNewServiceModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouvelle demande
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Demandes de service en cours</div>
+            <div class="stat-value">17</div>
+            <div class="stat-sub">transmises à l'ERP</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Kits demandés</div>
+            <div class="stat-value">96</div>
+            <div class="stat-sub">pour 96 membres</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Kits obtenus</div>
+            <div class="stat-value">64</div>
+            <div class="stat-sub">67 % des demandes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Kits remis et signés</div>
+            <div class="stat-value">58</div>
+            <div class="stat-sub">6 en attente de retrait</div>
+          </div>
+        </div>
+
+        <div class="filter-bar">
+          <div class="filter-pills">
+            <div class="filter-pill active">Toutes</div>
+            <div class="filter-pill">Demandes de service</div>
+            <div class="filter-pill">Kits d'intrants</div>
+            <div class="filter-pill">Boutiques</div>
+            <div class="filter-pill">Avances</div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>DATE</th>
+                <th>MEMBRE</th>
+                <th>NATURE</th>
+                <th>DÉTAIL</th>
+                <th>TRANSMIS À L'ERP</th>
+                <th>MONTANT</th>
+                <th>ÉTAT</th>
+              </tr>
+            </thead>
+            <tbody id="services-table-body">
+              <!-- Dynamique via app.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 9 : PRESTATAIRES DE SERVICES (MODULE C-10 JALON 4)
+           ================================================================== -->
+      <div class="view-page" id="view-providers">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Prestataires de services</h2>
+            <div class="section-subtitle">Jeunes formés par le cluster — conseil, mécanisation, appui</div>
+          </div>
+          <button class="btn-primary" onclick="openNewProviderModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouveau prestataire
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Prestataires actifs</div>
+            <div class="stat-value">4</div>
+            <div class="stat-sub positive">dont 2 jeunes femmes</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Producteurs suivis</div>
+            <div class="stat-value">186</div>
+            <div class="stat-sub">87 % du cluster</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Actes de service — campagne</div>
+            <div class="stat-value">312</div>
+            <div class="stat-sub">depuis le 1er juillet</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Revenu cumulé généré</div>
+            <div class="stat-value">1 248 000 <span>F</span></div>
+            <div class="stat-sub">moyenne 312 000 F / pers</div>
+          </div>
+        </div>
+
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>CODE</th>
+                <th>PRESTATAIRE</th>
+                <th>ÂGE</th>
+                <th>SPÉCIALITÉ</th>
+                <th>HABILITATION</th>
+                <th>PRODUCTEURS SUIVIS</th>
+                <th>ACTES</th>
+                <th>REVENU CAMPAGNE</th>
+              </tr>
+            </thead>
+            <tbody id="providers-table-body">
+              <tr>
+                <td><span class="code-badge">LWT-00048</span></td>
+                <td><strong>KANE Ibrahima</strong></td>
+                <td>31</td>
+                <td>Conseil agronomique</td>
+                <td><span class="status-pill ok">RiceAdvice · valide</span></td>
+                <td>62</td>
+                <td>118</td>
+                <td><strong>438 000 F</strong></td>
+              </tr>
+              <tr>
+                <td><span class="code-badge">LWT-00071</span></td>
+                <td><strong>SECK Astou</strong></td>
+                <td>26</td>
+                <td>Conseil agronomique</td>
+                <td><span class="status-pill ok">RiceAdvice · valide</span></td>
+                <td>54</td>
+                <td>96</td>
+                <td><strong>372 000 F</strong></td>
+              </tr>
+              <tr>
+                <td><span class="code-badge">LWT-00093</span></td>
+                <td><strong>THIAM Moussa</strong></td>
+                <td>29</td>
+                <td>Mécanisation</td>
+                <td><span class="status-pill ok">Conducteur · valide</span></td>
+                <td>41</td>
+                <td>62</td>
+                <td><strong>286 000 F</strong></td>
+              </tr>
+              <tr>
+                <td><span class="code-badge">LWT-00104</span></td>
+                <td><strong>DIOUF Ndèye</strong></td>
+                <td>24</td>
+                <td>Appui à la collecte</td>
+                <td><span class="status-pill warn">Formation en cours</span></td>
+                <td>29</td>
+                <td>36</td>
+                <td><strong>152 000 F</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 10 : COMMUNICATION (MODULE C-8 JALON 3)
+           ================================================================== -->
+      <div class="view-page" id="view-messages">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Messages aux producteurs</h2>
+            <div class="section-subtitle">SMS et messages vocaux en wolof et pulaar — surmonter l'analphabétisme</div>
+          </div>
+          <button class="btn-primary" onclick="openNewMessageModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouvel envoi
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Envois ce mois</div>
+            <div class="stat-value">1 842</div>
+            <div class="stat-sub">SMS et vocaux</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Taux de délivrance</div>
+            <div class="stat-value">94 <span>%</span></div>
+            <div class="stat-sub">108 échecs</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Dépense du mois</div>
+            <div class="stat-value">62 400 <span>F</span></div>
+            <div class="stat-sub">plafond : 80 000 F</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Modèles actifs</div>
+            <div class="stat-value">14</div>
+            <div class="stat-sub">français · wolof · pulaar</div>
+          </div>
+        </div>
+
+        <div class="panels-grid-2">
+          <!-- Panneau Nouvel Envoi -->
+          <div class="panel-card">
+            <div class="panel-title">MODÈLE DE MESSAGE SÉLECTIONNÉ</div>
+            <div class="mobile-field">
+              <label>DESTINATAIRES</label>
+              <input type="text" class="mobile-input" value="Cohorte A du CEP-LWT-01 · 20 membres" readonly>
+            </div>
+            <div class="mobile-field" style="margin-top:10px;">
+              <label>MODÈLE D'ALERTE CULTURALE</label>
+              <input type="text" class="mobile-input" value="Rappel avant opération — fumure de couverture" readonly>
+            </div>
+            <div style="margin-top:12px;">
+              <label style="font-size:11px; font-weight:800; color:var(--text-muted);">CANAL CHOISI</label>
+              <div style="display:flex; gap:8px; margin-top:6px;">
+                <span class="status-pill ok" style="padding:6px 12px; font-size:12px; cursor:pointer;">Vocal wolof</span>
+                <span class="status-pill" style="padding:6px 12px; font-size:12px; background:#f0f4f2; cursor:pointer;">SMS français</span>
+                <span class="status-pill" style="padding:6px 12px; font-size:12px; background:#f0f4f2; cursor:pointer;">Vocal pulaar</span>
+              </div>
+            </div>
+
+            <!-- Lecteur Audio Wolof Interactif -->
+            <div class="audio-player-box">
+              <button class="audio-play-btn" id="play-wolof-btn">▶</button>
+              <div style="flex:1;">
+                <div style="font-size:12px; font-weight:700; color:var(--text-title);">Lecture vocale en Wolof</div>
+                <div style="font-size:11.5px; color:var(--text-muted); font-style:italic; margin-top:2px;">
+                  « {prénom}, sa tool bi {parcelle} dafa war a am engrais bi tey. Ñëwal ci boutique bi. »
+                </div>
+              </div>
+              <div class="audio-waveform">
+                <div class="waveform-bar" style="animation-delay: 0.1s"></div>
+                <div class="waveform-bar" style="animation-delay: 0.3s"></div>
+                <div class="waveform-bar" style="animation-delay: 0.2s"></div>
+                <div class="waveform-bar" style="animation-delay: 0.4s"></div>
+                <div class="waveform-bar" style="animation-delay: 0.15s"></div>
+              </div>
+            </div>
+
+            <button class="btn-primary" style="width:100%; justify-content:center; margin-top:16px;" onclick="openNewMessageModal()">
+              Ouvrir le formulaire d'envoi détaillé
+            </button>
+          </div>
+
+          <!-- Panneau Journal des Envois -->
+          <div class="panel-card">
+            <div class="panel-title">JOURNAL DES DERNIERS ENVOIS</div>
+            <table class="custom-table" style="font-size:12px;">
+              <thead>
+                <tr>
+                  <th>DATE</th>
+                  <th>OBJET</th>
+                  <th>CANAL</th>
+                  <th>VISÉS</th>
+                  <th>DÉLIVRÉS</th>
+                  <th>COÛT</th>
+                </tr>
+              </thead>
+              <tbody id="messages-table-body">
+                <tr>
+                  <td>09/09</td>
+                  <td>Rappel fumure</td>
+                  <td>Vocal wolof</td>
+                  <td>42</td>
+                  <td><strong style="color:#15803d">40</strong></td>
+                  <td>6 720 F</td>
+                </tr>
+                <tr>
+                  <td>07/09</td>
+                  <td>Convocation séance 7</td>
+                  <td>SMS + vocal</td>
+                  <td>39</td>
+                  <td><strong style="color:#15803d">37</strong></td>
+                  <td>4 290 F</td>
+                </tr>
+                <tr>
+                  <td>02/09</td>
+                  <td>Journée démonstration</td>
+                  <td>Vocal wolof</td>
+                  <td>214</td>
+                  <td><strong style="color:#d97706">191</strong></td>
+                  <td>34 240 F</td>
+                </tr>
+                <tr>
+                  <td>28/08</td>
+                  <td>Rappel désherbage</td>
+                  <td>Vocal pulaar</td>
+                  <td>63</td>
+                  <td><strong style="color:#15803d">61</strong></td>
+                  <td>10 080 F</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 11 : RESTITUTION ET PARTAGE (TRANSVERSE JALON 2)
+           ================================================================== -->
+      <div class="view-page" id="view-reports">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Rapports et partage</h2>
+            <div class="section-subtitle">Exports au format attendu par le programme RIZAO & bailleurs — sans ressaisie</div>
+          </div>
+          <button class="btn-primary" onclick="generateReport('pdf', 'Rapport_Consolide_Audit')">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Générer un rapport
+          </button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-label">Rapports générés</div>
+            <div class="stat-value">9</div>
+            <div class="stat-sub">depuis le 1er juillet</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Dernier export programme</div>
+            <div class="stat-value" style="font-size:22px;">31/08/2026</div>
+            <div class="stat-sub positive">accepté sans correction</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Partenaires avec accès</div>
+            <div class="stat-value">3</div>
+            <div class="stat-sub">en lecture, vues agrégées</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Membres ayant consulté</div>
+            <div class="stat-value">48</div>
+            <div class="stat-sub">22 % du cluster</div>
+          </div>
+        </div>
+
+        <div class="panels-grid-2">
+          <!-- RAPPORTS DISPONIBLES -->
+          <div class="panel-card">
+            <div class="panel-title">RAPPORTS DU PROGRAMME DISPONIBLES</div>
+            <div class="alert-list">
+              <div class="alert-row" onclick="generateReport('xlsx', 'Rapport_Mensuel_Programme_RIZAO')">
+                <div class="alert-left">
+                  <div class="alert-bullet info"></div>
+                  <div>
+                    <strong>Rapport mensuel programme (MEDA)</strong><br>
+                    <span style="font-size:11.5px; color:var(--text-muted);">Emplois, inclusion, superficies, adoption — format suivi-évaluation</span>
+                  </div>
+                </div>
+                <span class="status-pill ok">CSV · XLSX</span>
+              </div>
+
+              <div class="alert-row" onclick="generateReport('pdf', 'Bilan_Campagne_Cluster')">
+                <div class="alert-left">
+                  <div class="alert-bullet info"></div>
+                  <div>
+                    <strong>Bilan de campagne du cluster</strong><br>
+                    <span style="font-size:11.5px; color:var(--text-muted);">Membres, parcelles, rendements, comparaison adoptants / témoins</span>
+                  </div>
+                </div>
+                <span class="status-pill ok">PDF · XLSX</span>
+              </div>
+
+              <div class="alert-row" onclick="generateReport('csv', 'Registre_Participants_CEP')">
+                <div class="alert-left">
+                  <div class="alert-bullet info"></div>
+                  <div>
+                    <strong>Registre des participants CEP</strong><br>
+                    <span style="font-size:11.5px; color:var(--text-muted);">Marqué « collecté pour le compte du programme »</span>
+                  </div>
+                </div>
+                <span class="status-pill ok">CSV</span>
+              </div>
+
+              <div class="alert-row" onclick="generateReport('geojson', 'Parcelles_Cluster_PostGIS')">
+                <div class="alert-left">
+                  <div class="alert-bullet info"></div>
+                  <div>
+                    <strong>Parcelles du cluster (SIG)</strong><br>
+                    <span style="font-size:11.5px; color:var(--text-muted);">Géométries WGS84 et attributs fonciers</span>
+                  </div>
+                </div>
+                <span class="status-pill ok">GeoJSON</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- TRAÇABILITÉ D'UN INDICATEUR -->
+          <div class="panel-card">
+            <div class="panel-title">TRAÇABILITÉ D'UN INDICATEUR (AUDIT TRAIL)</div>
+            <div style="background:#f4f9f6; border:1px solid #d0e6d8; border-radius:12px; padding:16px; margin-bottom:14px;">
+              <div style="font-size:14px; font-weight:800; color:var(--primary);">Part de jeunes femmes : 58 %</div>
+              <ul style="margin:10px 0 0 18px; font-size:12.5px; color:var(--text-body); line-height:1.6;">
+                <li>↳ 124 jeunes femmes sur 214 membres actifs</li>
+                <li>↳ dont 12 membres exclus du calcul — date de naissance absente</li>
+                <li>↳ dernière mise à jour : 24/09/2026 à 09 h 30</li>
+                <li>↳ <a href="javascript:void(0)" onclick="document.querySelector('.nav-item[data-view=members]').click()" style="color:var(--primary); font-weight:700;">Voir les 214 lignes de saisie d'origine →</a></li>
+              </ul>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); line-height:1.45;">
+              Chaque chiffre publié se remonte jusqu'à la ligne d'origine. Un chiffre que l'on ne peut pas justifier devant un auditeur est un chiffre qui se retourne contre le cluster.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 12 : PARAMÈTRES ET FLUX ERP (TRANSVERSE JALON 1)
+           ================================================================== -->
+      <div class="view-page" id="view-settings">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Paramètres et sécurité</h2>
+            <div class="section-subtitle">Référentiels fermés, habilitations, journal d'audit et supervision des 4 flux ERP</div>
+          </div>
+          <button class="btn-primary" onclick="openNewReferentialModal()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Nouveau référentiel
+          </button>
+        </div>
+
+        <div class="panels-grid-2">
+          <!-- Paramètres de campagne & Listes Fermées -->
+          <div class="panel-card">
+            <div class="panel-title">PARAMÈTRES DE CAMPAGNE</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px;">
+              <span class="status-pill ok">Âge « jeune » : 18 à 35 ans</span>
+              <span class="status-pill ok">Cible jeunes femmes : 70 %</span>
+              <span class="status-pill ok">Cible handicap : 5 %</span>
+              <span class="status-pill ok">Écart de superficie toléré : 5 %</span>
+              <span class="status-pill ok">Plafond messages : 80 000 F/mois</span>
+              <span class="status-pill ok">Campagne active : 2026-2027</span>
+            </div>
+
+            <div class="panel-title" style="margin-top:20px;">RÉFÉRENTIELS À LISTES FERMÉES</div>
+            <div style="display:flex; flex-wrap:wrap; gap:8px;">
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Villages · 5</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Cuvettes · 4</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Variétés · 6</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Thèmes de séance · 13</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Rôles · 7</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Natures de service · 9</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Modes de paiement · 4</span>
+              <span class="status-pill" style="background:#eaf2ed; color:var(--text-title); font-weight:700;">Types d'emploi · 6</span>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:14px;">
+              * Règle absolue : Aucune valeur déjà utilisée n'est supprimable. Aucune saisie libre sur un champ qui sert à une agrégation.
+            </div>
+          </div>
+
+          <!-- SUPERVISION DES 4 FLUX ERP LAWTAN -->
+          <div class="panel-card">
+            <div class="panel-title">FLUX D'ÉCHANGE AVEC L'ERP LAWTAN</div>
+            <div class="alert-list">
+              <div class="alert-row" style="cursor:default;">
+                <div class="alert-left">
+                  <span class="code-badge">F-1</span>
+                  <div><strong>Identité des personnes</strong> → ERP LAWTAN</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="status-pill ok">Actif · 08 h 12</span>
+                  <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="replayFlux('F-1')">Rejouer</button>
+                </div>
+              </div>
+
+              <div class="alert-row" style="cursor:default;">
+                <div class="alert-left">
+                  <span class="code-badge">F-2</span>
+                  <div><strong>Livraisons usine par producteur</strong> ← ERP</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="status-pill ok">Actif · 07 h 40</span>
+                  <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="replayFlux('F-2')">Rejouer</button>
+                </div>
+              </div>
+
+              <div class="alert-row" style="cursor:default;">
+                <div class="alert-left">
+                  <span class="code-badge">F-3</span>
+                  <div><strong>Jours-personnes du GIE</strong> ← ERP</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="status-pill ok">Actif · 06 h 00</span>
+                  <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="replayFlux('F-3')">Rejouer</button>
+                </div>
+              </div>
+
+              <div class="alert-row" style="cursor:default;">
+                <div class="alert-left">
+                  <span class="code-badge">F-4</span>
+                  <div><strong>Demandes de prestation de service</strong> → ERP</div>
+                </div>
+                <div style="display:flex; align-items:center; gap:8px;">
+                  <span class="status-pill warn">3 en attente</span>
+                  <button class="btn-secondary" style="padding:4px 8px; font-size:11px;" onclick="replayFlux('F-4')">Transmettre</button>
+                </div>
+              </div>
+            </div>
+            <div style="font-size:12px; color:var(--text-muted); margin-top:14px; line-height:1.45;">
+              Quatre flux asynchrones et rejouables. Une panne de réseau ou d'un flux ne bloque jamais le fonctionnement local du cluster.
+            </div>
+          </div>
+        </div>
+
+        <!-- JOURNAL D'AUDIT IMMUABLE -->
+        <div class="table-container" style="margin-top:20px;">
+          <div style="padding:14px 18px; font-weight:800; font-size:13px; color:var(--text-title); border-bottom:1px solid var(--border-light);">
+            PISTE D'AUDIT DU CLUSTER (AUDIT TRAIL IMMUABLE)
+          </div>
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>HORODATAGE</th>
+                <th>UTILISATEUR</th>
+                <th>ACTION</th>
+                <th>OBJET</th>
+                <th>VALEUR PRÉCÉDENTE</th>
+                <th>ORIGINE</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>24/09 09:14</td>
+                <td>Administrateur données</td>
+                <td><span class="status-pill ok">Fusion doublons validée</span></td>
+                <td>LWT-00071 ← LWT-00188</td>
+                <td>2 fiches distinctes</td>
+                <td>Web · bureau</td>
+              </tr>
+              <tr>
+                <td>24/09 08:52</td>
+                <td>Agent de terrain 2</td>
+                <td><span class="status-pill ok">Création de parcelle</span></td>
+                <td>PAR-LWT-00051-A</td>
+                <td>—</td>
+                <td>Mobile · hors connexion</td>
+              </tr>
+              <tr>
+                <td>23/09 17:31</td>
+                <td>Animateur CEP</td>
+                <td><span class="status-pill warn">Modification présence</span></td>
+                <td>Séance 7 · LWT-00045</td>
+                <td>Présente → Excusée</td>
+                <td>Mobile · synchronisé</td>
+              </tr>
+              <tr>
+                <td>23/09 11:08</td>
+                <td>Administrateur données</td>
+                <td><span class="status-pill ok">Paramètre modifié</span></td>
+                <td>Plafond messages</td>
+                <td>60 000 F → 80 000 F</td>
+                <td>Web · bureau</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           PAGE 13 : APPLICATION DE TERRAIN MOBILE ANDROID (MODULE C-3)
+           ================================================================== -->
+      <div class="view-page" id="view-mobile">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Application de terrain (Android Hors-Ligne)</h2>
+            <div class="section-subtitle">Trois écrans mobiles interactifs de terrain · saisie express &lt; 90s · zéro perte de données</div>
+          </div>
+          <button class="btn-primary" onclick="triggerSync()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+            Synchroniser avec le bureau (<span class="pending-sync-count">2</span>)
+          </button>
+        </div>
+
+        <!-- Sélecteur d'écrans mobile tactile pour petit écran -->
+        <div class="mobile-screen-tabs">
+          <button class="mobile-screen-tab active" data-screen="0" onclick="switchMobileSimScreen(0)">Fiche F1 · Adhésion</button>
+          <button class="mobile-screen-tab" data-screen="1" onclick="switchMobileSimScreen(1)">Fiche F2 · GPS Parcelle</button>
+          <button class="mobile-screen-tab" data-screen="2" onclick="switchMobileSimScreen(2)">Fiche F4 · Présences</button>
+        </div>
+
+        <!-- Les 3 Smartphones Interactifs du Mockup Client (Page 12) -->
+        <div class="mobile-simulator-layout">
+
+          <!-- SMARTPHONE 1 : NOUVELLE ADHÉSION (FICHE F1) -->
+          <div class="smartphone-frame">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <div class="phone-header-title">Nouvelle adhésion</div>
+                <div class="phone-header-sub">LAWTAN Connect · terrain</div>
+              </div>
+              <div class="offline-pill-banner">
+                ⚡ Hors connexion — <span class="pending-sync-count">2</span> fiches en attente
+              </div>
+              <div class="phone-body">
+                <div class="mobile-field">
+                  <label>NOM</label>
+                  <input type="text" id="mob-nom" class="mobile-input" value="SOW">
+                </div>
+                <div class="mobile-field">
+                  <label>PRÉNOM</label>
+                  <input type="text" id="mob-prenom" class="mobile-input" value="Aminata">
+                </div>
+                <div class="mobile-field">
+                  <label>SEXE</label>
+                  <select class="mobile-input">
+                    <option value="F">Féminin</option>
+                    <option value="M">Masculin</option>
+                  </select>
+                </div>
+                <div class="mobile-field">
+                  <label>DATE DE NAISSANCE</label>
+                  <input type="text" class="mobile-input" value="14 / 03 / 1999">
+                </div>
+                <div class="mobile-field">
+                  <label>TÉLÉPHONE</label>
+                  <input type="text" id="mob-tel" class="mobile-input" value="+221 77 645 12 08">
+                </div>
+                <div class="mobile-field">
+                  <label>VILLAGE</label>
+                  <select id="mob-village" class="mobile-input">
+                    <option>Ross-Béthio</option>
+                    <option>Mboundoum-Barrage</option>
+                    <option>Thilène</option>
+                    <option>Pont-Gendarme</option>
+                    <option>Ndombo</option>
+                  </select>
+                </div>
+                <button class="btn-mobile-action" onclick="submitMobileAdhesion()">
+                  📷 Photographier la pièce & Valider
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SMARTPHONE 2 : LEVÉE DE PARCELLE GPS (FICHE F2) -->
+          <div class="smartphone-frame">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <div class="phone-header-title">Levée de parcelle</div>
+                <div class="phone-header-sub">PAR-LWT-00042-A</div>
+              </div>
+              <div class="offline-pill-banner" style="background:#eaf8ed; color:#166534;">
+                🎯 Précision GPS : 4,2 m (Excellente)
+              </div>
+              <div class="phone-body">
+                <div class="mini-gps-canvas" id="mobile-gps-canvas" onclick="simulateGpsWalk()">
+                  <svg width="100%" height="100%" viewBox="0 0 200 100">
+                    <polygon points="20,20 180,25 170,85 15,80" fill="#bbf7d0" stroke="#16a34a" stroke-width="2"/>
+                    <circle cx="20" cy="20" r="4" fill="#0b3b24"/>
+                    <circle cx="180" cy="25" r="4" fill="#0b3b24"/>
+                    <circle cx="170" cy="85" r="4" fill="#0b3b24"/>
+                    <circle cx="15" cy="80" r="4" fill="#0b3b24"/>
+                    <text x="50" y="55" font-size="11" font-weight="700" fill="#14532d">1,24 ha (mesuré)</text>
+                  </svg>
+                </div>
+                <div class="mobile-field">
+                  <label>MÉTHODE DE RELEVÉ</label>
+                  <select class="mobile-input">
+                    <option>Contour marché à pied</option>
+                    <option>Quatre coins relevés</option>
+                  </select>
+                </div>
+                <div class="mobile-field">
+                  <label>SUPERFICIE MESURÉE</label>
+                  <input type="text" class="mobile-input" value="1,24 ha" readonly style="font-weight:800; color:var(--primary);">
+                </div>
+                <div class="mobile-field">
+                  <label>SUPERFICIE DÉCLARÉE</label>
+                  <input type="text" class="mobile-input" value="1,50 ha · écart - 17 %" readonly style="color:#d97706;">
+                </div>
+                <button class="btn-mobile-action" onclick="simulateGpsWalk()">
+                  🚶‍♂️ Relancer le tracé GPS
+                </button>
+                <button class="btn-mobile-action" style="background:#0b3b24;" onclick="showToast('✅ Parcelle enregistrée dans la file hors-connexion !')">
+                  Enregistrer la parcelle
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SMARTPHONE 3 : FEUILLE DE PRÉSENCE CEP (FICHE F4) -->
+          <div class="smartphone-frame">
+            <div class="phone-screen">
+              <div class="phone-header">
+                <div class="phone-header-title">Feuille de présence</div>
+                <div class="phone-header-sub">Séance 7 · Cohorte A</div>
+              </div>
+              <div class="offline-pill-banner">
+                ⚡ Hors connexion · Pointage tactile
+              </div>
+              <div class="phone-body">
+                <div class="presence-item">
+                  <span class="presence-name">SOW Aminata</span>
+                  <div class="presence-btn-group">
+                    <button class="presence-toggle-btn active p" data-type="p">P</button>
+                    <button class="presence-toggle-btn" data-type="a">A</button>
+                    <button class="presence-toggle-btn" data-type="e">E</button>
+                  </div>
+                </div>
+
+                <div class="presence-item">
+                  <span class="presence-name">BA Ousmane</span>
+                  <div class="presence-btn-group">
+                    <button class="presence-toggle-btn active p" data-type="p">P</button>
+                    <button class="presence-toggle-btn" data-type="a">A</button>
+                    <button class="presence-toggle-btn" data-type="e">E</button>
+                  </div>
+                </div>
+
+                <div class="presence-item">
+                  <span class="presence-name">NDIAYE Fatou</span>
+                  <div class="presence-btn-group">
+                    <button class="presence-toggle-btn" data-type="p">P</button>
+                    <button class="presence-toggle-btn" data-type="a">A</button>
+                    <button class="presence-toggle-btn active e" data-type="e">E</button>
+                  </div>
+                </div>
+
+                <div class="presence-item">
+                  <span class="presence-name">GAYE Mariama</span>
+                  <div class="presence-btn-group">
+                    <button class="presence-toggle-btn" data-type="p">P</button>
+                    <button class="presence-toggle-btn active a" data-type="a">A</button>
+                    <button class="presence-toggle-btn" data-type="e">E</button>
+                  </div>
+                </div>
+
+                <div class="presence-item">
+                  <span class="presence-name">DIOP Alioune</span>
+                  <div class="presence-btn-group">
+                    <button class="presence-toggle-btn active p" data-type="p">P</button>
+                    <button class="presence-toggle-btn" data-type="a">A</button>
+                    <button class="presence-toggle-btn" data-type="e">E</button>
+                  </div>
+                </div>
+
+                <div class="presence-item">
+                  <span class="presence-name">SY Khadija</span>
+                  <div class="presence-btn-group">
+                    <button class="presence-toggle-btn active p" data-type="p">P</button>
+                    <button class="presence-toggle-btn" data-type="a">A</button>
+                    <button class="presence-toggle-btn" data-type="e">E</button>
+                  </div>
+                </div>
+
+                <button class="btn-mobile-action" onclick="showToast('📷 Photo de la liste d\'émargement capturée et compressée à 180 Ko !')">
+                  📷 Photo de l'émargement
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ======================================================================
+       MODAL 1 : CARTE DE MEMBRE & QR CODE SÉCURISÉ
+       ====================================================================== -->
+  <div class="modal-overlay" id="member-detail-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Fiche individuelle du membre</h3>
+        <button class="modal-close" onclick="closeMemberModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <!-- Carte de membre officielle imprimable avec QR -->
+        <div class="member-id-card">
+          <div class="card-qr-box">
+            <!-- QR code vectoriel SVG -->
+            <svg viewBox="0 0 100 100">
+              <rect x="0" y="0" width="30" height="30" fill="#0b3b24"/>
+              <rect x="6" y="6" width="18" height="18" fill="white"/>
+              <rect x="10" y="10" width="10" height="10" fill="#0b3b24"/>
+              
+              <rect x="70" y="0" width="30" height="30" fill="#0b3b24"/>
+              <rect x="76" y="6" width="18" height="18" fill="white"/>
+              <rect x="80" y="10" width="10" height="10" fill="#0b3b24"/>
+
+              <rect x="0" y="70" width="30" height="30" fill="#0b3b24"/>
+              <rect x="6" y="76" width="18" height="18" fill="white"/>
+              <rect x="10" y="80" width="10" height="10" fill="#0b3b24"/>
+
+              <rect x="40" y="20" width="20" height="20" fill="#0b3b24"/>
+              <rect x="50" y="60" width="30" height="10" fill="#0b3b24"/>
+              <rect x="70" y="45" width="20" height="15" fill="#0b3b24"/>
+              <rect x="40" y="75" width="15" height="15" fill="#0b3b24"/>
+            </svg>
+          </div>
+          <div class="card-details">
+            <div class="card-cluster-name">GIE LAWTAN · CLUSTER MBOUNDOUM</div>
+            <div class="card-member-name" id="modal-member-fullname">SOW Aminata</div>
+            <div class="card-code" id="modal-member-code">LWT-00042</div>
+            <div class="card-subtext" id="modal-member-village">Ross-Béthio · Commune de Diama</div>
+            <div class="card-subtext" style="color:#a7f3d0;">Programme RIZAO (Pilier 2) · MEDA</div>
+          </div>
+        </div>
+
+        <div id="doublon-alert-box" style="display:none; background:#fde8e8; border:1px solid #f87171; border-radius:10px; padding:12px; color:#991b1b; font-size:13px;">
+          ⚠️ <strong>Suspicion de doublon :</strong> <span id="doublon-alert-desc"></span>
+          <div style="margin-top:8px;">
+            <button class="btn-primary" style="padding:4px 10px; font-size:12px;" onclick="showToast('Arbitrage de fusion validé par le superviseur !')">Valider la fusion</button>
+            <button class="btn-secondary" style="padding:4px 10px; font-size:12px; margin-left:6px;" onclick="showToast('Dossier marqué comme personne distincte.')">Ignorer l'alerte</button>
+          </div>
+        </div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:14px; font-size:13px;">
+          <div><strong>Téléphone :</strong> <span id="modal-member-tel">+221 77 645 12 08</span></div>
+          <div><strong>Situation handicap :</strong> <span id="modal-member-handicap">Non</span></div>
+          <div><strong>Rôles cumulés :</strong> <span id="modal-member-roles">Productrice, Participante CEP</span></div>
+          <div><strong>Parcelles :</strong> <span id="modal-member-parcelles">2 parcelles enregistrées</span></div>
+          <div><strong>Pièce CNI :</strong> <span style="color:#16a34a; font-weight:700;">Conforme · photo horodatée</span></div>
+          <div><strong>Consentement RIZAO :</strong> <span style="color:#16a34a; font-weight:700;">Signé numériquement</span></div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="window.print()">🖨️ Imprimer la carte</button>
+        <button class="btn-primary" onclick="closeMemberModal()">Fermer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2 : NOUVELLE ADHÉSION BUREAU -->
+  <div class="modal-overlay" id="new-member-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Enrôlement nouveau membre (Fiche F1)</h3>
+        <button class="modal-close" onclick="closeNewMemberModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="mobile-field">
+            <label>NOM</label>
+            <input type="text" id="new-nom" class="mobile-input" placeholder="Ex: SALL">
+          </div>
+          <div class="mobile-field">
+            <label>PRÉNOM</label>
+            <input type="text" id="new-prenom" class="mobile-input" placeholder="Ex: Aissatou">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="mobile-field">
+            <label>SEXE</label>
+            <select id="new-sexe" class="mobile-input">
+              <option value="F">Féminin (Femme)</option>
+              <option value="M">Masculin (Homme)</option>
+            </select>
+          </div>
+          <div class="mobile-field">
+            <label>DATE DE NAISSANCE</label>
+            <input type="date" id="new-naissance" class="mobile-input">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px;">
+          <div class="mobile-field">
+            <label>TÉLÉPHONE PRINCIPAL</label>
+            <input type="tel" id="new-tel" class="mobile-input" placeholder="+221 77 000 00 00">
+          </div>
+          <div class="mobile-field">
+            <label>VILLAGE DU CLUSTER</label>
+            <select id="new-village" class="mobile-input">
+              <option>Mboundoum-Barrage</option>
+              <option>Ross-Béthio</option>
+              <option>Thilène</option>
+              <option>Pont-Gendarme</option>
+              <option>Ndombo</option>
+            </select>
+          </div>
+        </div>
+        <div class="mobile-field">
+          <label>SITUATION DE HANDICAP</label>
+          <select id="new-handicap" class="mobile-input">
+            <option value="Non">Non</option>
+            <option value="Oui">Oui (précision obligatoire)</option>
+            <option value="Ne souhaite pas répondre">Ne souhaite pas répondre</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewMemberModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewMemberBureau()">Enregistrer et attribuer matricule</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3 : NOUVELLE PARCELLE (FICHE F2 & GPS) -->
+  <div class="modal-overlay" id="new-parcel-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Enregistrement d'une nouvelle parcelle (Fiche F2 & GPS)</h3>
+        <button class="modal-close" onclick="closeNewParcelModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="mobile-field">
+          <label>PRODUCTEUR / MEMBRE ASSOCIÉ</label>
+          <select id="parcel-member" class="mobile-input">
+            <!-- Rempli dynamiquement -->
+          </select>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+          <div class="mobile-field">
+            <label>CUVETTE HYDRAULIQUE</label>
+            <select id="parcel-cuvette" class="mobile-input">
+              <option value="Boundoum">Boundoum</option>
+              <option value="Mboundoum">Mboundoum</option>
+              <option value="Kassack">Kassack</option>
+              <option value="Thiagar">Thiagar</option>
+            </select>
+          </div>
+          <div class="mobile-field">
+            <label>RÉFÉRENCE CASIER SAED</label>
+            <input type="text" id="parcel-ref-saed" class="mobile-input" value="BD-14-204" placeholder="Ex: BD-14-204">
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+          <div class="mobile-field">
+            <label>VARIÉTÉ DU PLAN DE CULTURE</label>
+            <select id="parcel-variete" class="mobile-input">
+              <option value="Sahel 108">Sahel 108 (cycle court 120j)</option>
+              <option value="Sahel 134">Sahel 134</option>
+              <option value="Sahel 201">Sahel 201 (aromatique)</option>
+              <option value="Sahel 202">Sahel 202</option>
+              <option value="Nerica L-19">Nerica L-19</option>
+              <option value="Jaya">Jaya</option>
+            </select>
+          </div>
+          <div class="mobile-field">
+            <label>MÉTHODE DE LEVÉ GÉODÉSIQUE</label>
+            <select id="parcel-methode" class="mobile-input">
+              <option value="Contour marché">Contour marché (GPS mobile)</option>
+              <option value="4 coins">4 coins géodésiques</option>
+              <option value="Borne SAED">Borne SAED certifiée</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+          <div class="mobile-field">
+            <label>SUPERFICIE DÉCLARÉE (HA)</label>
+            <input type="number" step="0.01" id="parcel-sup-declaree" class="mobile-input" value="1.50" oninput="calculateParcelDelta()">
+          </div>
+          <div class="mobile-field">
+            <label>SUPERFICIE MESURÉE GPS (HA)</label>
+            <input type="number" step="0.01" id="parcel-sup-mesuree" class="mobile-input" value="1.35" oninput="calculateParcelDelta()">
+          </div>
+        </div>
+        
+        <div style="background:#f7faf8; border:1px solid #dce8e0; border-radius:10px; padding:12px; margin-top:12px; display:flex; align-items:center; justify-content:space-between;">
+          <span style="font-size:12px; font-weight:700; color:var(--text-title);">Écart calculé (tolérance ±10%) :</span>
+          <span id="parcel-delta-display" class="status-pill ok">-10.0 %</span>
+        </div>
+        <div id="parcel-delta-alert" style="display:none; margin-top:8px; font-size:12px; color:#b91c1c; background:#fef2f2; border:1px solid #fecaca; border-radius:8px; padding:8px 12px;"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewParcelModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewParcel()">Enregistrer la parcelle</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 4 : NOUVELLE SÉANCE CEP (FICHE F3/F4) -->
+  <div class="modal-overlay" id="new-session-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Enregistrement séance Champ École (Fiche F3/F4)</h3>
+        <button class="modal-close" onclick="closeNewSessionModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div style="display:grid; grid-template-columns:1fr 2fr; gap:12px;">
+          <div class="mobile-field">
+            <label>N° DE SÉANCE</label>
+            <input type="text" id="session-num" class="mobile-input" value="08">
+          </div>
+          <div class="mobile-field">
+            <label>COHORTE DU CEP</label>
+            <select id="session-cohorte" class="mobile-input">
+              <option value="A">Cohorte A (20 membres)</option>
+              <option value="B">Cohorte B (20 membres)</option>
+              <option value="C">Cohorte C (18 membres)</option>
+            </select>
+          </div>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>THÈME TECHNIQUE AU CALENDRIER</label>
+          <select id="session-theme" class="mobile-input">
+            <option value="Outil d'aide à la décision RiceAdvice">Outil d'aide à la décision RiceAdvice</option>
+            <option value="Gestion de l'eau et planage">Gestion de l'eau et planage</option>
+            <option value="Préparation du sol et semis en ligne">Préparation du sol et semis en ligne</option>
+            <option value="Dépistage ravageurs et maladies">Dépistage ravageurs et maladies</option>
+            <option value="Fumure de couverture et fractionnement">Fumure de couverture et fractionnement</option>
+            <option value="Récolte et battage motorisé">Récolte et battage motorisé</option>
+          </select>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+          <div class="mobile-field">
+            <label>ANIMATEUR RÉFÉRENT</label>
+            <input type="text" id="session-animateur" class="mobile-input" value="Agent SENAD">
+          </div>
+          <div class="mobile-field">
+            <label>DURÉE OBSERVÉE</label>
+            <input type="text" id="session-duree" class="mobile-input" value="2 h 30">
+          </div>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>NOMBRE DE MEMBRES PRÉSENTS (SUR 20)</label>
+          <input type="number" id="session-presents" class="mobile-input" value="18" min="0" max="20">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewSessionModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewSession()">Valider la séance et les présences</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 5 : FICHE RECOMMANDATION RICEADVICE (MODULE C-6) -->
+  <div class="modal-overlay" id="recommendation-detail-modal">
+    <div class="modal-container" style="max-width:680px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Recommandation personnalisée RiceAdvice (Module C-6)</h3>
+        <button class="modal-close" onclick="closeRecommendationModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div style="background:#eef7f2; border:1px solid #c2e2cf; border-radius:12px; padding:16px; margin-bottom:16px;">
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <span class="code-badge">PAR-LWT-00042-A</span>
+              <strong style="margin-left:8px; font-size:14px; color:var(--text-title);">SOW Aminata</strong>
+            </div>
+            <span class="status-pill ok">Variété : Sahel 108 · 1,24 ha</span>
+          </div>
+          <div style="margin-top:10px; font-size:12.5px; color:var(--text-body);">
+            Target Rendement : <strong>6,8 tonnes/ha</strong> (Gain net prévisionnel estimé : <strong>+185 000 FCFA/ha</strong>)
+          </div>
+        </div>
+
+        <div class="panel-title" style="margin-bottom:8px;">CALENDRIER D'APPLICATION DE LA FERTILISATION</div>
+        <div class="table-container" style="margin-bottom:16px;">
+          <table class="custom-table" style="font-size:12px;">
+            <thead>
+              <tr>
+                <th>STADE</th>
+                <th>DATE PRÉVUE</th>
+                <th>ENGRAIS CONSEILLÉ</th>
+                <th>DOSE PARCELLE</th>
+                <th>CONSEIL CLÉS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Semis / Fond</strong></td>
+                <td>08/08/2026</td>
+                <td>NPK 15-15-15</td>
+                <td>186 kg (3,7 sacs)</td>
+                <td>Incorporer avant mise en eau</td>
+              </tr>
+              <tr style="background:#f4fbf7;">
+                <td><strong>1er Tallage</strong></td>
+                <td>26/09/2026</td>
+                <td>Urée 46%</td>
+                <td>124 kg (2,5 sacs)</td>
+                <td><strong style="color:var(--primary);">Parcelle à sec le matin, engrais à 16h</strong></td>
+              </tr>
+              <tr>
+                <td><strong>Initiation paniculaire</strong></td>
+                <td>18/10/2026</td>
+                <td>Urée 46%</td>
+                <td>93 kg (1,9 sac)</td>
+                <td>Maintien niveau eau 5 cm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="audio-player-box" style="margin-top:10px;">
+          <button class="audio-play-btn" onclick="showToast('Lecture de la note vocale Wolof pour SOW Aminata')">▶</button>
+          <div style="flex:1;">
+            <div style="font-size:12px; font-weight:700; color:var(--text-title);">Message vocal de vulgarisation Wolof prêt</div>
+            <div style="font-size:11.5px; color:var(--text-muted); font-style:italic;">
+              « Aminata, 26 septembre bi sa tool war na am 2 sacs et demi urée... »
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeRecommendationModal()">Fermer</button>
+        <button class="btn-primary" onclick="showToast('Recommandation envoyée par SMS et Vocal Wolof !'); closeRecommendationModal();">
+          Diffuser la recommandation au producteur
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 6 : DEMANDE DE PRESTATION (FICHE F11 & FLUX F-4) -->
+  <div class="modal-overlay" id="new-service-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Demande de prestation de service (F-4)</h3>
+        <button class="modal-close" onclick="closeNewServiceModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="mobile-field">
+          <label>MEMBRE DEMANDEUR</label>
+          <select id="service-member" class="mobile-input">
+            <!-- Rempli dynamiquement -->
+          </select>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>NATURE DU SERVICE SOLLICITÉ</label>
+          <select id="service-nature" class="mobile-input">
+            <option value="Moissonnage-battage">Moissonnage-battage motorisé</option>
+            <option value="Labour & pulvérisation">Labour & pulvérisation tracteur</option>
+            <option value="Repiquage mécanisé">Repiquage mécanisé</option>
+            <option value="Conseil RiceAdvice">Conseil RiceAdvice sur parcelle</option>
+            <option value="Transport récolte">Transport récolte vers usine</option>
+          </select>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>DÉTAIL / PARCELLE CONCERNÉE</label>
+          <input type="text" id="service-detail" class="mobile-input" value="1,24 ha · PAR-LWT-00042-A">
+        </div>
+        <div style="font-size:11.5px; color:var(--text-muted); margin-top:10px; background:#f0f7f3; padding:10px; border-radius:8px;">
+          ℹ️ Cette demande est transmise à l'ERP LAWTAN via le <strong>Flux F-4</strong> pour ordonnancement et facturation automatisée.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewServiceModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewService()">Transmettre à l'ERP (Flux F-4)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 7 : NOUVEAU PRESTATAIRE JEUNE (FICHE F12) -->
+  <div class="modal-overlay" id="new-provider-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Habilitation nouveau prestataire jeune (Fiche F12)</h3>
+        <button class="modal-close" onclick="closeNewProviderModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="mobile-field">
+          <label>JEUNE SÉLECTIONNÉ PARMI LES MEMBRES</label>
+          <select id="provider-member" class="mobile-input">
+            <!-- Rempli dynamiquement -->
+          </select>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>SPÉCIALITÉ FORMÉE</label>
+          <select id="provider-spe" class="mobile-input">
+            <option value="Conseil agronomique">Conseil agronomique & vulgarisation</option>
+            <option value="Mécanisation">Mécanisation agricole (conduite)</option>
+            <option value="Appui à la collecte">Appui logistique & pesée collecte</option>
+            <option value="Traitements phytosanitaires">Traitements phytosanitaires sécurisés</option>
+          </select>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>STATUT D'HABILITATION & TEST</label>
+          <select id="provider-hab" class="mobile-input">
+            <option value="RiceAdvice · valide">RiceAdvice · test réussi (valide)</option>
+            <option value="Conducteur · valide">Permis tracteur · valide</option>
+            <option value="Formation en cours">Formation pratique en cours</option>
+          </select>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewProviderModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewProvider()">Habiliter le prestataire</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 8 : NOUVELLE CAMPAGNE DE MESSAGES (FICHE F13) -->
+  <div class="modal-overlay" id="new-message-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Nouvelle diffusion de messages aux membres (Fiche F13)</h3>
+        <button class="modal-close" onclick="closeNewMessageModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="mobile-field">
+          <label>DESTINATAIRES CIBLÉS</label>
+          <select id="msg-dest" class="mobile-input">
+            <option value="Cohorte A CEP">Cohorte A du CEP (20 membres)</option>
+            <option value="Cohorte B CEP">Cohorte B du CEP (20 membres)</option>
+            <option value="Producteurs Boundoum">Producteurs de Boundoum (64 membres)</option>
+            <option value="Cluster Global">Tous les membres du cluster (214)</option>
+          </select>
+        </div>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:10px;">
+          <div class="mobile-field">
+            <label>CANAL DE DIFFUSION</label>
+            <select id="msg-canal" class="mobile-input">
+              <option value="Vocal wolof">Message vocal Wolof</option>
+              <option value="SMS français">SMS en français</option>
+              <option value="Vocal pulaar">Message vocal Pulaar</option>
+              <option value="SMS + vocal">SMS + Vocal combinés</option>
+            </select>
+          </div>
+          <div class="mobile-field">
+            <label>NOMBRE VISÉ</label>
+            <input type="number" id="msg-vises" class="mobile-input" value="20">
+          </div>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>OBJET DE LA DIFFUSION</label>
+          <input type="text" id="msg-objet" class="mobile-input" value="Alerte calendrier — tallage et apport urée">
+        </div>
+        <div style="font-size:11.5px; color:var(--text-muted); margin-top:10px; background:#f0f7f3; padding:10px; border-radius:8px;">
+          Coût unitaire estimé : 160 FCFA / destinataire vocal délivré. Plafond mensuel respecté.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewMessageModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewMessage()">Lancer la diffusion immédiate</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 9 : NOUVEAU RÉFÉRENTIEL FERMÉ -->
+  <div class="modal-overlay" id="new-referential-modal">
+    <div class="modal-container">
+      <div class="modal-header">
+        <h3 class="modal-title">Ajout d'une entrée de référentiel fermé (Immuable)</h3>
+        <button class="modal-close" onclick="closeNewReferentialModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <div class="mobile-field">
+          <label>CATÉGORIE DE RÉFÉRENTIEL</label>
+          <select id="ref-type" class="mobile-input">
+            <option value="Villages">Villages du cluster</option>
+            <option value="Cuvettes">Cuvettes hydrauliques</option>
+            <option value="Variétés">Variétés rizicoles homologuées</option>
+            <option value="Thèmes CEP">Thèmes techniques CEP</option>
+            <option value="Natures de prestation">Natures de prestation</option>
+          </select>
+        </div>
+        <div class="mobile-field" style="margin-top:10px;">
+          <label>NOUVELLE VALEUR CERTIFIÉE</label>
+          <input type="text" id="ref-val" class="mobile-input" placeholder="Ex: Kassack-Nord">
+        </div>
+        <div style="font-size:11.5px; color:var(--text-muted); margin-top:10px;">
+          * Règle de gouvernance : Les entrées de référentiels sont immuables. Une fois utilisées dans des formulaires, elles ne peuvent être supprimées.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn-secondary" onclick="closeNewReferentialModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitNewReferential()">Ajouter au référentiel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BARRE DE NAVIGATION INFÉRIEURE MOBILE -->
+  <nav class="mobile-bottom-nav">
+    <button class="mobile-tab-item active" data-view="dashboard">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+      <span>Bord</span>
+    </button>
+    <button class="mobile-tab-item" data-view="members">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+      <span>Membres</span>
+    </button>
+    <button class="mobile-tab-item" data-view="parcels">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+      <span>Parcelles</span>
+    </button>
+    <button class="mobile-tab-item" data-view="schools">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      <span>CEP</span>
+    </button>
+    <button class="mobile-tab-item mobile-highlight" data-view="mobile">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      <span>Terrain</span>
+    </button>
+    <button class="mobile-tab-item" id="mobile-more-btn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1.5"/><circle cx="19" cy="12" r="1.5"/><circle cx="5" cy="12" r="1.5"/></svg>
+      <span>Menu</span>
+    </button>
+  </nav>
+
+  <script src="app.js"></script>
+  <script>
+    function openNewMemberModal() {
+      document.getElementById('new-member-modal').classList.add('active');
+    }
+    function closeNewMemberModal() {
+      document.getElementById('new-member-modal').classList.remove('active');
+    }
+    function submitNewMemberBureau() {
+      const nom = document.getElementById('new-nom').value || 'SALL';
+      const prenom = document.getElementById('new-prenom').value || 'Aissatou';
+      const sexe = document.getElementById('new-sexe').value || 'F';
+      const tel = document.getElementById('new-tel').value || '+221 77 444 55 66';
+      const village = document.getElementById('new-village').value || 'Mboundoum-Barrage';
+      const code = 'LWT-000' + (DB.membres.length + 43);
+
+      DB.membres.unshift({
+        code: code,
+        nom: nom,
+        prenom: prenom,
+        sexe: sexe,
+        age: 25,
+        village: village,
+        roles: ['Productrice'],
+        parcelles: 1,
+        cni: true,
+        statut: 'complet',
+        tel: tel,
+        handicap: 'Non',
+        dateAdhesion: '24/09/2026'
+      });
+
+      renderMembersTable();
+      populateMemberSelects();
+      closeNewMemberModal();
+      showToast('✅ Membre ' + code + ' (' + nom + ' ' + prenom + ') enregistré avec succès !');
+    }
+  </script>
+</body>
+</html>
