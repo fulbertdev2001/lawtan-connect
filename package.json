@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "LAWTAN Connect — Prototype Officiel du Cluster (MVP Global)",
   "scripts": {
-    "build": "echo Build complete",
+    "build": "node -e \"const fs=require('fs'); fs.cpSync('prototype', 'public', {recursive: true});\" && echo Build complete",
     "dev": "python -m http.server 8080 --directory prototype",
     "start": "python -m http.server 8080 --directory prototype"
   },

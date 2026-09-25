@@ -1,10 +1,8 @@
 {
   "cleanUrls": true,
+  "outputDirectory": "public",
   "rewrites": [
-    { "source": "/", "destination": "/prototype/index.html" },
-    { "source": "/style.css", "destination": "/prototype/style.css" },
-    { "source": "/app.js", "destination": "/prototype/app.js" },
-    { "source": "/prototype/(.*)", "destination": "/prototype/$1" },
-    { "source": "/(.*)", "destination": "/prototype/$1" }
+    { "source": "/prototype/(.*)", "destination": "/$1" },
+    { "source": "/prototype", "destination": "/" }
   ]
 }
